@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="text-success text-center">Listado de personas registradas</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr class="bg-success text-light">
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Identificacion</th>
+                <th scope="col">Email</th>
+                <th scope="col">Concatenacion Nombre</th>
+                <th scope="col">Concatenacion Identificacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let _data of data">
+                <td>{{_data.id}}</td>
+                <td>{{_data.names}}</td>
+                <td>{{_data.lastnames}}</td>
+                <td>{{_data.identification}}</td>
+                <td>{{_data.email}}</td>
+                <td>{{_data.concactnamelastname}}</td>
+                <td>{{_data.concacttypeididentity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-success"
+    (click)="Salir()"
+>Salir</button>
+</div>

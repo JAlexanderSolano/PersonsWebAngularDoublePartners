@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form (ngSubmit)="Registrarme()" #frmLogin="ngForm">
+                <div class="mb-2">
+                    <label class="form-label text-success">Nombres</label>
+                    <input type="text" name="nombre" class="form-control" placeholder="Ingrese sus nombres"
+                        [(ngModel)]="person.names" required #names="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="names.valid || names.pristine">
+                        El campo nombre es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Apellidos</label>
+                    <input type="text" name="apellidos" class="form-control" placeholder="Ingrese sus apellidos"
+                        [(ngModel)]="person.lastnames" required #lastnames="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="lastnames.valid || lastnames.pristine">
+                        El campo apellido es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Identificación</label>
+                    <input type="text" name="identificacion" class="form-control"
+                        placeholder="Ingrese su Identificación" [(ngModel)]="person.identification" required
+                        #identification="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="identification.valid || identification.pristine">
+                        El campo identificación es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Ingrese su correo electronico"
+                        [(ngModel)]="person.email" required #email="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="email.valid || email.pristine">
+                        El campo email es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Tipo de Identificación</label>
+                    <select name="tipoidentificacion" class="form-control" [(ngModel)]="person.typeid" required
+                        #tipoIdentificacion="ngModel">
+                        <option value="Seleccione">Seleccione</option>
+                        <option value="CC">CC</option>
+                        <option value="TI">TI</option>
+                        <option value="CE">CE</option>
+                    </select>
+                    <div class="alert alert-danger mt-2"
+                        [hidden]="tipoIdentificacion.valid || tipoIdentificacion.pristine">
+                        El campo tipo identificacion es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Usuario</label>
+                    <input type="text" name="usuario" class="form-control" placeholder="Ingrese su usuario"
+                        [(ngModel)]="person.username" required #user="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="user.valid || user.pristine">
+                        El campo usuario es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Contraseña</label>
+                    <input type="email" name="email" class="form-control" placeholder="Ingrese su contraseña"
+                        [(ngModel)]="person.password" required #password="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="password.valid || password.pristine">
+                        El campo contraseña es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label text-success">Confirmar Contraseña</label>
+                    <input type="email" name="email" class="form-control" placeholder="Ingrese de nuevo su contraseña"
+                        [(ngModel)]="person.confirmpass" required #confirmpass="ngModel">
+                    <div class="alert alert-danger mt-2" [hidden]="confirmpass.valid || confirmpass.pristine">
+                        El campo confirmar contraseña es obligatorio
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <button class="btn-success loginSes" [disabled]="frmLogin.invalid">Registrarme</button>
+                </div>
+            </form>
+            <div class="mb-2">
+                <a (click)="Login()" class="text-success register"> Ingresa al sistema si ya te encuentras
+                    registrado</a>
+            </div>
+        </div>
+    </div>
+</div>

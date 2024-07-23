@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form (ngSubmit)="Login()" #frmLogin="ngForm" >
+          <div class="mb-2">
+            <label class="form-label text-success">Usuario</label>
+            <input type="text" name="usuario" class="form-control" placeholder="Ingrese su usuario" [(ngModel)]="usuario.username" required #user="ngModel">
+            <div class="alert alert-danger mt-2"[hidden]="user.valid || user.pristine">
+              El campo usuario es obligatorio
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label text-success">Contraseña</label>
+            <input type="password" name="contrasena" class="form-control" placeholder="Ingrese su contraseña" [(ngModel)]="usuario.password" required #contrasena="ngModel" >
+            <div class="alert alert-danger mt-2"[hidden]="contrasena.valid || contrasena.pristine">
+              El campo contraseña es obligatorio
+            </div>
+          </div>
+          <div class="mb-2">
+            <button class="btn-success loginSes" [disabled]="frmLogin.invalid">Ingresar</button>
+          </div>
+        </form>
+        <div class="mb-2">
+          <a (click)="Registrarme()" class="text-success register"> Registrarme</a>
+        </div>
+      </div>
+    </div>
+  </div>
