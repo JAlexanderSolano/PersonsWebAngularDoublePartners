@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,6 @@ export class LoginComponent {
   data: any[] = [];
   constructor(private apiService: ApiService, private router:Router){}
   Login(){
-    //console.log(this.usuario)
     let baseURL = this.apiService.ObtenerUrl();
     fetch(baseURL+'Login/Login', 
       {
@@ -43,10 +43,26 @@ export class LoginComponent {
      });
     
      if(this.result == "Bienvenido"){
-      alert(this.result + ' sr/sra '+ this.usuario.username);
-      this.router.navigate(['/principal'])
+      //alert(this.result + ' sr/sra '+ this.usuario.username);
+      Swal.fire({ 
+        title:'Exito', 
+        text: this.result +' sr/sra '+ this.usuario.username, 
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2000
+      }).then((_result)=>{
+        if(_result.isDismissed){
+          this.router.navigate(['/principal'])
+        }
+      });
     }else{
-      alert(this.result);
+      Swal.fire({ 
+        title:'Error', 
+        text: this.result, 
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
 
   }

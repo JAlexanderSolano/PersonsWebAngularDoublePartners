@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registrarme',
   templateUrl: './registrarme.component.html',
@@ -59,10 +59,25 @@ export class RegistrarmeComponent {
     });
    
     if(this.result == "Persona registrada con exito"){
-     alert(this.result);
-     this.router.navigate([''])
+     Swal.fire({ 
+      title:'Exito', 
+      text: this.result, 
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 2000
+    }).then((_result)=>{
+      if(_result.isDismissed){
+        this.router.navigate([''])
+      }
+    });
    }else{
-     alert(this.result);
+    Swal.fire({ 
+      title:'Error', 
+      text: this.result, 
+      icon: 'error',
+      showConfirmButton: false,
+      timer: 2000
+    });
    }
   }
 }
